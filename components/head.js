@@ -1,6 +1,8 @@
 import React from 'react'
 import NextHead from 'next/head'
 import { string } from 'prop-types'
+import '@carbon/grid/css/grid.min.css';
+import 'carbon-components/css/carbon-components.min.css';
 
 const defaultDescription = ''
 const defaultOGURL = ''

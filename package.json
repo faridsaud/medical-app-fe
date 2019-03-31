@@ -6,8 +6,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@carbon/grid": "^10.0.0",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "carbon-components": "^10.0.0",
+    "carbon-components-react": "^6.114.0",
+    "carbon-icons": "^7.0.7",
+    "formik": "^1.5.1",
     "next": "8.0.3",
+    "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "save": "^2.3.3",
+    "yup": "^0.27.0"
   }
 }
