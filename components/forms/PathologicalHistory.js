@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
-  Form, FormGroup, FormItem, TextInput,
-  DatePicker, DatePickerInput, Select, SelectItem, TextArea,
+  Form, TextArea,
 } from 'carbon-components-react';
 import './styles.css';
 

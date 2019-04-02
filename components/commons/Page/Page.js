@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components'
-import Head from '../../../components/head';
-import AppBar from '../../../components/commons/AppBar/AppBar';
+import styled from 'styled-components';
+import Head from '../../head';
+import AppBar from '../AppBar/AppBar';
 import PageTitle from './PageTitle';
 
-function Page({children, title}) {
+function Page({ children, title }) {
   return (
-      <React.Fragment>
-        <Head title="Clinic History" />
-        <AppBar/>
-        <PageTitle>{title}</PageTitle>
-        <Content>
-          {children}
-        </Content>
-      </React.Fragment>
+    <React.Fragment>
+      <Head title="Clinic History" />
+      <AppBar />
+      <PageTitle>{title}</PageTitle>
+      <Content>
+        {children}
+      </Content>
+    </React.Fragment>
   );
 }
 
