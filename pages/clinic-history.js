@@ -4,7 +4,7 @@ import Page from '../components/commons/Page/Page';
 
 function ClinicHistory() {
   return (
-      <Page>
+      <Page title={'Clinic History'}>
         <Patient></Patient>
       </Page>
   );
