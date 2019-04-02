@@ -1,0 +1,16 @@
+.bx--select-input, .bx--select, .bx--date-picker-container, .bx--date-picker-container>input, .bx--date-picker{
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.bx--date-picker__icon {
+    top: 2rem;
+}
+
+.bx--select__arrow{
+    top: 2.5rem;
+}
+
+.bx--form-item{
+    padding-top: 1rem;
+}
