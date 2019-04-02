@@ -5,13 +5,13 @@ import Head from '../../head';
 import AppBar from '../AppBar/AppBar';
 import PageTitle from './PageTitle';
 
-function Page({ children, title }) {
+function Page({ children, title, id }) {
   return (
     <React.Fragment>
       <Head title="Clinic History" />
       <AppBar />
       <PageTitle>{title}</PageTitle>
-      <Content>
+      <Content id={id}>
         {children}
       </Content>
     </React.Fragment>
@@ -21,10 +21,12 @@ function Page({ children, title }) {
 Page.propTypes = {
   children: PropTypes.element,
   title: PropTypes.string,
+  id: PropTypes.string,
 };
 
 Page.defaultProps = {
   title: '',
+  id: '',
 };
 
 const Content = styled.div`

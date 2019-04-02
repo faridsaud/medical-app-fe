@@ -14,3 +14,7 @@
 .bx--form-item{
     padding-top: 1rem;
 }
+
+#clinic-history .bx--form{
+    margin: 0;
+}
