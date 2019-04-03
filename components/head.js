@@ -1,8 +1,7 @@
 import React from 'react';
 import NextHead from 'next/head';
 import { string } from 'prop-types';
-import 'carbon-components/css/carbon-components.min.css';
-import '@carbon/grid/css/grid.min.css';
+
 
 const defaultDescription = '';
 const defaultOGURL = '';
@@ -21,6 +20,9 @@ const Head = props => (
     <link rel="apple-touch-icon" href="/static/touch-icon.png" />
     <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
     <link rel="icon" href="/static/favicon.ico" />
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/carbon-grid/dist/css/carbon-grid.css"/>
+
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
     <meta
