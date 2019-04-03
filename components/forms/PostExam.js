@@ -7,7 +7,7 @@ import {
 } from 'carbon-components-react';
 import './styles.css';
 
-const MedicalConsultationSchema = Yup.object().shape({
+const PostExamSchema = Yup.object().shape({
   diagnosis: Yup.string().required('Required'),
   treatmentPlan: Yup.string().required('Required'),
   indications: Yup.string().required('Required'),
@@ -21,7 +21,7 @@ class PostExam extends Component {
     return (
       <Formik
         initialValues={initialValues}
-        validationSchema={MedicalConsultationSchema}
+        validationSchema={PostExamSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));

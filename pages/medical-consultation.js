@@ -4,6 +4,7 @@ import { Button, Switch, ContentSwitcher, Footer } from 'carbon-components-react
 import Page from '../components/commons/Page/Page';
 import PostExam from '../components/forms/PostExam';
 import PhysicalExam from '../components/forms/PhysicalExam';
+import PreExam from '../components/forms/PreExam';
 
 class MedicalConsultation extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class MedicalConsultation extends Component {
       case 0: {
         return (
           <FormContainer>
+            <PreExam/>
           </FormContainer>
         )
       }
