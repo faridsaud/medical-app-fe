@@ -42,7 +42,6 @@ class Patient extends Component {
           errors, touched, setFieldValue, handleChange, values,
         }) => (
           <Form className="bx--grid">
-            {console.log({ errors, values })}
             <div className="bx--row">
               <div className="bx--col bx--col-sm-4">
                 <TextInput

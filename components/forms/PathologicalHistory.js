@@ -33,7 +33,6 @@ class PathologicalHistory extends Component {
           errors, touched, setFieldValue, handleChange, values,
         }) => (
           <Form className="bx--grid">
-            {console.log({ errors, values })}
             <div className="bx--row">
               <div className="bx--col">
                 <TextArea
@@ -44,6 +43,7 @@ class PathologicalHistory extends Component {
                   onChange={(e) => {
                     setFieldValue('personal', e.target.value);
                   }}
+                  rows={2}
                 />
               </div>
             </div>
@@ -57,6 +57,7 @@ class PathologicalHistory extends Component {
                   onChange={(e) => {
                     setFieldValue('family', e.target.value);
                   }}
+                  rows={2}
                 />
               </div>
             </div>
@@ -70,6 +71,7 @@ class PathologicalHistory extends Component {
                   onChange={(e) => {
                     setFieldValue('allergic', e.target.value);
                   }}
+                  rows={2}
                 />
               </div>
             </div>
@@ -83,6 +85,7 @@ class PathologicalHistory extends Component {
                   onChange={(e) => {
                     setFieldValue('surgical', e.target.value);
                   }}
+                  rows={2}
                 />
               </div>
             </div>
@@ -96,6 +99,7 @@ class PathologicalHistory extends Component {
                   onChange={(e) => {
                     setFieldValue('hospital', e.target.value);
                   }}
+                  rows={2}
                 />
               </div>
             </div>

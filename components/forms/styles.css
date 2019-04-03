@@ -3,18 +3,7 @@
     max-width: 100% !important;
 }
 
-.bx--date-picker__icon {
-    top: 2rem;
-}
-
-.bx--select__arrow{
-    top: 2.5rem;
-}
 
 .bx--form-item{
     padding-top: 1rem;
-}
-
-#clinic-history .bx--form{
-    margin: 0;
 }
