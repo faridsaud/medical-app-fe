@@ -7,6 +7,7 @@ import Page from '../components/commons/Page/Page';
 import PathologicalHistory from '../components/forms/PathologicalHistory';
 import NonPathologicalHistory from '../components/forms/NonPathologicalHistory';
 import MedicalConsultations from '../components/commons/Table/MedicalConsultations';
+import withAuth from '../hoc/withAuth';
 
 class ClinicHistory extends Component {
   constructor(props) {
@@ -114,4 +115,4 @@ const MedicalConsultationsContainer = styled.div`
 `;
 
 
-export default ClinicHistory;
+export default withAuth(ClinicHistory);

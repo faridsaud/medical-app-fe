@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'next/link';
 
 import {
   Button,
@@ -32,7 +31,7 @@ function MedicalConsultations(props) {
       <StructuredListBody>
         {
             medicalConsultations.map(medicalConsultation => (
-              <StructuredListRow>
+              <StructuredListRow key={medicalConsultation.uuid}>
                 <StructuredListCell noWrap>
                   {medicalConsultation.illness}
                 </StructuredListCell>
@@ -40,11 +39,11 @@ function MedicalConsultations(props) {
                   {medicalConsultation.date}
                 </StructuredListCell>
                 <StructuredListCell>
-                  <Link href={`/medical-consultation?uuid=${medicalConsultation.uuid}`}>
-                    <Button>
+                    <Button
+                      href={`/medical-consultation?uuid=${medicalConsultation.uuid}`}
+                    >
                       View
                     </Button>
-                  </Link>
                 </StructuredListCell>
               </StructuredListRow>
             ))
