@@ -25,7 +25,7 @@ const NonPathologicalHistorySchema = Yup.object().shape({
 
 class NonPathologicalHistory extends Component {
   render() {
-    const { initialValues } = this.props;
+    const { initialValues, onChange } = this.props;
     return (
       <Formik
         initialValues={initialValues}
@@ -41,7 +41,7 @@ class NonPathologicalHistory extends Component {
           errors, touched, setFieldValue, handleChange, values,
         }) => (
           <Form className="bx--grid">
-            {console.log({errors, values})}
+            {onChange({ values, errors })}
             <div className="bx--row">
               <div className="bx--col">
                 <Accordion>
@@ -210,6 +210,7 @@ class NonPathologicalHistory extends Component {
 NonPathologicalHistory.propTypes = {
   initialValues: PropTypes.object,
   onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 NonPathologicalHistory.defaultProps = {
@@ -228,6 +229,7 @@ NonPathologicalHistory.defaultProps = {
     toxic: '',
   },
   onSubmit: () => {},
+  onChange: () => {},
 };
 
 export default NonPathologicalHistory;

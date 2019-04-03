@@ -15,7 +15,7 @@ const MedicalConsultationSchema = Yup.object().shape({
   observations: Yup.string().required('Required'),
 });
 
-class MedicalConsultation extends Component {
+class PostExam extends Component {
   render() {
     const { initialValues } = this.props;
     return (
@@ -106,12 +106,12 @@ class MedicalConsultation extends Component {
   }
 }
 
-MedicalConsultation.propTypes = {
+PostExam.propTypes = {
   initialValues: PropTypes.object,
   onSubmit: PropTypes.func,
 };
 
-MedicalConsultation.defaultProps = {
+PostExam.defaultProps = {
   initialValues: {
     diagnosis: '',
     treatmentPlan: '',
@@ -122,4 +122,4 @@ MedicalConsultation.defaultProps = {
   onSubmit: () => {},
 };
 
-export default MedicalConsultation;
+export default PostExam;

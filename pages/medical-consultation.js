@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Button, Switch, ContentSwitcher, Footer } from 'carbon-components-react';
-import Patient from '../components/forms/Patient';
 import Page from '../components/commons/Page/Page';
-import PathologicalHistory from '../components/forms/PathologicalHistory';
-import NonPathologicalHistory from '../components/forms/NonPathologicalHistory';
+import PostExam from '../components/forms/PostExam';
+import PhysicalExam from '../components/forms/PhysicalExam';
 
-class ClinicHistory extends Component {
+class MedicalConsultation extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,21 +23,20 @@ class ClinicHistory extends Component {
       case 0: {
         return (
           <FormContainer>
-            <Patient />
           </FormContainer>
         )
       }
       case 1: {
         return (
           <FormContainer>
-            <PathologicalHistory />
+            <PhysicalExam />
           </FormContainer>
         )
       }
       case 2: {
         return (
           <FormContainer>
-            <NonPathologicalHistory onChange={({values, errors})=>{ console.log({values, errors})}}/>
+            <PostExam/>
           </FormContainer>
         )
       }
@@ -49,29 +47,28 @@ class ClinicHistory extends Component {
   render() {
     const { selectedIndex } = this.state;
     return (
-      <Page title="Clinic History" id="clinic-history">
+      <Page title="Medical Consultation" id="medical-consultation">
         <ContentSwitchetContainer className={'bx--grid'}>
           <ContentSwitcher onChange={this.setSelectedIndex} selectedIndex={selectedIndex}>
             <Switch
               name="one"
-              text="Patient Information"
+              text="Pre Exam"
               disabled={false}
             />
             <Switch
               name="two"
-              text="Pathological History"
+              text="Physical Exam"
               disabled={false}
             />
             <Switch
               name="three"
-              text="Non-Pathological History"
+              text="Post Exam"
               disabled={false}
             />
           </ContentSwitcher>
         </ContentSwitchetContainer>
         {this.renderCurrentStep()}
         <Footer
-
           buttonText={'Save'}
         />
       </Page>
@@ -79,7 +76,7 @@ class ClinicHistory extends Component {
   }
 }
 
-ClinicHistory.propTypes = {};
+MedicalConsultation.propTypes = {};
 
 const FormContainer = styled.div`
   display: flex;
@@ -95,4 +92,4 @@ const ContentSwitchetContainer = styled.div`
 `;
 
 
-export default ClinicHistory;
+export default MedicalConsultation;
