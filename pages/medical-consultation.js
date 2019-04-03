@@ -50,7 +50,7 @@ class MedicalConsultation extends Component {
     const { selectedIndex } = this.state;
     return (
       <Page title="Medical Consultation" id="medical-consultation">
-        <ContentSwitchetContainer className={'bx--grid'}>
+        <ContentSwitcherContainer className={'bx--grid'}>
           <ContentSwitcher onChange={this.setSelectedIndex} selectedIndex={selectedIndex}>
             <Switch
               name="one"
@@ -68,9 +68,15 @@ class MedicalConsultation extends Component {
               disabled={false}
             />
           </ContentSwitcher>
-        </ContentSwitchetContainer>
+        </ContentSwitcherContainer>
         {this.renderCurrentStep()}
         <Footer
+          labelOne={""}
+          linkTextOne={""}
+          linkHrefOne={""}
+          labelTwo={""}
+          linkTextTwo={""}
+          linkHrefTwo={""}
           buttonText={'Save'}
         />
       </Page>
@@ -86,7 +92,7 @@ const FormContainer = styled.div`
   margin-bottom: 8rem;
 `;
 
-const ContentSwitchetContainer = styled.div`
+const ContentSwitcherContainer = styled.div`
   display: flex;
   margin: auto;
   justify-content: center;
