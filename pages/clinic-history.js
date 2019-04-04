@@ -7,18 +7,29 @@ import Page from '../components/commons/Page/Page';
 import PathologicalHistory from '../components/forms/PathologicalHistory';
 import NonPathologicalHistory from '../components/forms/NonPathologicalHistory';
 import MedicalConsultations from '../components/commons/Table/MedicalConsultations';
-import withAuth from '../hoc/withAuth';
 
 class ClinicHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedIndex: 0,
+      patient: {},
     };
   }
 
   setSelectedIndex = ({index}) =>{
     this.setState({ selectedIndex:index });
+  };
+
+  setPatientValues = ({values, errors}) => {
+    const {patient} = this.state;
+    if(JSON.stringify({values, errors})!== JSON.stringify(patient))
+    this.setState({
+      patient:{
+        values,
+        errors,
+      }
+    })
   };
 
   renderCurrentStep = () => {
@@ -27,7 +38,7 @@ class ClinicHistory extends Component {
       case 0: {
         return (
           <FormContainer>
-            <Patient />
+            <Patient onChange={this.setPatientValues}/>
           </FormContainer>
         )
       }
@@ -50,7 +61,8 @@ class ClinicHistory extends Component {
 
 
   render() {
-    const { selectedIndex } = this.state;
+    const { selectedIndex, patient } = this.state;
+    console.log({patient});
     return (
       <Page title="Clinic History" id="clinic-history">
         <ContentSwitcherContainer className={'bx--grid'}>
@@ -115,4 +127,4 @@ const MedicalConsultationsContainer = styled.div`
 `;
 
 
-export default withAuth(ClinicHistory);
+export default ClinicHistory;

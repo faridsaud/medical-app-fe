@@ -61,4 +61,4 @@ const Container = styled.div`
 `;
 
 
-export default withAuth(Dashboard);
+export default Dashboard;

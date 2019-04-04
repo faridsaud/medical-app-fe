@@ -26,7 +26,7 @@ const PatientSchema = Yup.object().shape({
 
 class Patient extends Component {
   render() {
-    const { initialValues } = this.props;
+    const { initialValues, onChange } = this.props;
     return (
       <Formik
         initialValues={initialValues}
@@ -39,9 +39,10 @@ class Patient extends Component {
         }}
       >
         {({
-          errors, touched, setFieldValue, handleChange, values,
+          errors, touched, setFieldValue, values,
         }) => (
           <Form className="bx--grid">
+            {onChange({ values, errors })}
             <div className="bx--row">
               <div className="bx--col bx--col-sm-4">
                 <TextInput
@@ -185,6 +186,7 @@ class Patient extends Component {
 Patient.propTypes = {
   initialValues: PropTypes.object,
   onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 Patient.defaultProps = {
@@ -204,6 +206,7 @@ Patient.defaultProps = {
     },
   },
   onSubmit: () => {},
+  onChange: () => {},
 };
 
 export default Patient;

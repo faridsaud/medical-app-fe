@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Form, TextInput, Modal, Footer } from 'carbon-components-react';
+import {
+  Form, TextInput, Modal, Footer,
+} from 'carbon-components-react';
 import Head from '../components/head';
-import Page from '../components/commons/Page/Page';
 
 class Login extends Component {
   constructor(props) {

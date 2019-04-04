@@ -4,7 +4,9 @@ import { isLoggedIn } from '../utils/auth';
 
 const withAuth = WrappedComponent => function () {
   if (!isLoggedIn()) {
-    Router.push('/login');
+    if (Router) {
+      Router.push('/login');
+    }
     return null;
   }
   return <WrappedComponent />;

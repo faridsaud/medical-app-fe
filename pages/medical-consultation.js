@@ -101,4 +101,4 @@ const ContentSwitcherContainer = styled.div`
 `;
 
 
-export default withAuth(MedicalConsultation);
+export default MedicalConsultation;

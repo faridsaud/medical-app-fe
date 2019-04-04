@@ -1,6 +1,7 @@
 import React from 'react';
 import NextHead from 'next/head';
 import { string } from 'prop-types';
+import '../styles/main.css';
 
 
 const defaultDescription = '';
