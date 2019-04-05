@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Footer, Search } from 'carbon-components-react';
 import Page from '../components/commons/Page/Page';
 import ClinicHistories from '../components/commons/Table/ClinicHistories';
-import withAuth from '../hoc/withAuth';
 
 class Dashboard extends Component {
   constructor(props) {

@@ -5,7 +5,6 @@ import Page from '../components/commons/Page/Page';
 import PostExam from '../components/forms/PostExam';
 import PhysicalExam from '../components/forms/PhysicalExam';
 import PreExam from '../components/forms/PreExam';
-import withAuth from '../hoc/withAuth';
 
 class MedicalConsultation extends Component {
   constructor(props) {

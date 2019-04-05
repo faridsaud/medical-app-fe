@@ -1,12 +1,12 @@
-const withCSS = require('@zeit/next-css')
-const withSASS = require('@zeit/next-sass')
+const withCSS = require('@zeit/next-css');
+const withSASS = require('@zeit/next-sass');
 
 
 module.exports = withSASS(withCSS({
   sassLoaderOptions: {
-    includePaths: ["node_modules"]
+    includePaths: ['node_modules'],
   },
-  webpack: config => {
+  webpack: (config) => {
     // Fixes npm packages that depend on `fs` module
     config.node = {
       fs: 'empty',
