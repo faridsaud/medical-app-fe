@@ -38,7 +38,8 @@ class ClinicHistory extends Component {
       const {data: {
         patient,
         pathologicalHistory,
-        nonPathologicalHistory
+        nonPathologicalHistory,
+        medicalConsultations,
       }} = await RestServices.clinicHistory.get(uuid);
       this.setState({
         patient:{
@@ -65,6 +66,10 @@ class ClinicHistory extends Component {
 
           },
         },
+        medicalConsultations: medicalConsultations.map(medicalConsultation => ({
+          uuid: medicalConsultation._id,
+          ...medicalConsultation,
+        }))
       })
     } catch (e) {
 
@@ -171,9 +176,8 @@ class ClinicHistory extends Component {
 
 
   render() {
-    const { selectedIndex} = this.state;
+    const { selectedIndex, medicalConsultations} = this.state;
     const {query:{uuid}} = this.props;
-    console.log(this.state);
     return (
       <Page title="Clinic History" id="clinic-history">
         <ContentSwitcherContainer className={'bx--grid'}>
@@ -210,7 +214,7 @@ class ClinicHistory extends Component {
             </MedicalHeaderContainter>
 
             <MedicalConsultations
-              medicalConsultations={[{uuid: '1', illness: 'Love Sick', date: new Date().toISOString()}]}
+              medicalConsultations={medicalConsultations}
             />
           </MedicalConsultationsContainer>
         }

@@ -17,6 +17,7 @@ class PreExam extends Component {
     const { initialValues, onChange } = this.props;
     return (
       <Formik
+        enableReinitialize
         initialValues={initialValues}
         validationSchema={PreExamSchema}
         onSubmit={(values, { setSubmitting }) => {

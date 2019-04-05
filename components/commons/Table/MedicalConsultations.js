@@ -33,7 +33,7 @@ function MedicalConsultations(props) {
             medicalConsultations.map(medicalConsultation => (
               <StructuredListRow key={medicalConsultation.uuid}>
                 <StructuredListCell noWrap>
-                  {medicalConsultation.illness}
+                  {medicalConsultation.currentIllness}
                 </StructuredListCell>
                 <StructuredListCell>
                   {medicalConsultation.date}

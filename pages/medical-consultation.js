@@ -8,6 +8,7 @@ import PreExam from '../components/forms/PreExam';
 import RestServices from '../services/rest';
 import { toast } from 'react-toastify';
 import Router from 'next/dist/client/router';
+import _ from 'lodash';
 
 class MedicalConsultation extends Component {
   constructor(props) {
@@ -28,6 +29,54 @@ class MedicalConsultation extends Component {
       },
     };
   }
+  componentDidMount = async () => {
+    try {
+      const {query:{uuid}} = this.props;
+      const {data: {
+        physicalExam,
+        reason,
+        currentIllness,
+        diagnosis,
+        treatmentPlan,
+        indications,
+        complementaryExam,
+        observations,
+      }} = await RestServices.medicalConsultation.get(uuid);
+      this.setState({
+        preExam:{
+          values:{
+            reason,
+            currentIllness,
+          },
+          errors:{
+
+          },
+        },
+        physicalExam:{
+          values:{
+            ...physicalExam,
+          },
+          errors:{
+
+          },
+        },
+        postExam:{
+          values:{
+            diagnosis,
+            treatmentPlan,
+            indications,
+            complementaryExam,
+            observations,
+          },
+          errors:{
+
+          },
+        },
+      })
+    } catch (e) {
+
+    }
+  };
 
   static getInitialProps({query}) {
     return {query}
@@ -39,7 +88,7 @@ class MedicalConsultation extends Component {
 
   setPreExamValues = ({values, errors}) => {
     const {preExam} = this.state;
-    if(JSON.stringify({values, errors})!== JSON.stringify(preExam))
+    if(JSON.stringify({values, errors})!== JSON.stringify(preExam) && !_.isEmpty(values))
       this.setState({
         preExam:{
           values,
@@ -50,7 +99,7 @@ class MedicalConsultation extends Component {
 
   setPhysicalExamValues = ({values, errors}) => {
     const {physicalExam} = this.state;
-    if(JSON.stringify({values, errors})!== JSON.stringify(physicalExam))
+    if(JSON.stringify({values, errors})!== JSON.stringify(physicalExam) && !_.isEmpty(values))
       this.setState({
         physicalExam:{
           values,
@@ -61,7 +110,7 @@ class MedicalConsultation extends Component {
 
   setPostExamValues = ({values, errors}) => {
     const {postExam} = this.state;
-    if(JSON.stringify({values, errors})!== JSON.stringify(postExam))
+    if(JSON.stringify({values, errors})!== JSON.stringify(postExam) && !_.isEmpty(values))
       this.setState({
         postExam:{
           values,

@@ -104,12 +104,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Wrinkles"
-                          id="wrinkles"
-                          invalid={errors.wrinkles}
-                          invalidText={errors.wrinkles}
-                          value={values.wrinkles}
+                          id="faceExam.wrinkles"
+                          invalid={errors.faceExam && errors.faceExam.wrinkles}
+                          invalidText={errors.faceExam && errors.faceExam.wrinkles}
+                          value={values.faceExam && values.faceExam.wrinkles}
                           onChange={(e) => {
-                            setFieldValue('wrinkles', e.target.value);
+                            setFieldValue('faceExam.wrinkles', e.target.value);
                           }}
                           rows={2}
                         />
@@ -119,12 +119,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Volume"
-                          id="volume"
-                          invalid={errors.volume}
-                          invalidText={errors.volume}
-                          value={values.volume}
+                          id="faceExam.volume"
+                          invalid={errors.faceExam && errors.faceExam.volume}
+                          invalidText={errors.faceExam && errors.faceExam.volume}
+                          value={values.faceExam && values.faceExam.volume}
                           onChange={(e) => {
-                            setFieldValue('volume', e.target.value);
+                            setFieldValue('faceExam.volume', e.target.value);
                           }}
                           rows={2}
                         />
@@ -134,12 +134,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Dyschromias"
-                          id="dyschromias"
-                          invalid={errors.dyschromias}
-                          invalidText={errors.dyschromias}
-                          value={values.dyschromias}
+                          id="faceExam.dyschromias"
+                          invalid={errors.faceExam && errors.faceExam.dyschromias}
+                          invalidText={errors.faceExam && errors.faceExam.dyschromias}
+                          value={values.faceExam && values.faceExam.dyschromias}
                           onChange={(e) => {
-                            setFieldValue('dyschromias', e.target.value);
+                            setFieldValue('faceExam.dyschromias', e.target.value);
                           }}
                           rows={2}
                         />
@@ -149,12 +149,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Vascular"
-                          id="vascular"
-                          invalid={errors.vascular}
-                          invalidText={errors.vascular}
-                          value={values.vascular}
+                          id="faceExam.vascular"
+                          invalid={errors.faceExam && errors.faceExam.vascular}
+                          invalidText={errors.faceExam && errors.faceExam.vascular}
+                          value={values.faceExam && values.faceExam.vascular}
                           onChange={(e) => {
-                            setFieldValue('vascular', e.target.value);
+                            setFieldValue('faceExam.vascular', e.target.value);
                           }}
                           rows={2}
                         />
@@ -164,12 +164,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Flaccidity"
-                          id="flaccidity"
-                          invalid={errors.flaccidity}
-                          invalidText={errors.flaccidity}
-                          value={values.flaccidity}
+                          id="faceExam.flaccidity"
+                          invalid={errors.faceExam && errors.faceExam.flaccidity}
+                          invalidText={errors.faceExam && errors.faceExam.flaccidity}
+                          value={values.faceExam && values.faceExam.flaccidity}
                           onChange={(e) => {
-                            setFieldValue('flaccidity', e.target.value);
+                            setFieldValue('faceExam.flaccidity', e.target.value);
                           }}
                           rows={2}
                         />
@@ -179,12 +179,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Scars"
-                          id="scars"
-                          invalid={errors.scars}
-                          invalidText={errors.scars}
-                          value={values.scars}
+                          id="faceExam.scars"
+                          invalid={errors.faceExam && errors.faceExam.scars}
+                          invalidText={errors.faceExam && errors.faceExam.scars}
+                          value={values.faceExam && values.faceExam.scars}
                           onChange={(e) => {
-                            setFieldValue('scars', e.target.value);
+                            setFieldValue('faceExam.scars', e.target.value);
                           }}
                           rows={2}
                         />
@@ -194,12 +194,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Skin"
-                          id="skin"
-                          invalid={errors.skin}
-                          invalidText={errors.skin}
-                          value={values.skin}
+                          id="faceExam.skin"
+                          invalid={errors.faceExam && errors.faceExam.skin}
+                          invalidText={errors.faceExam && errors.faceExam.skin}
+                          value={values.faceExam && values.faceExam.skin}
                           onChange={(e) => {
-                            setFieldValue('skin', e.target.value);
+                            setFieldValue('faceExam.skin', e.target.value);
                           }}
                           rows={2}
                         />
@@ -209,12 +209,12 @@ class PhysicalExam extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Others"
-                          id="others"
-                          invalid={errors.others}
-                          invalidText={errors.others}
-                          value={values.others}
+                          id="faceExam.others"
+                          invalid={errors.faceExam && errors.faceExam.others}
+                          invalidText={errors.faceExam && errors.faceExam.others}
+                          value={values.faceExam && values.faceExam.others}
                           onChange={(e) => {
-                            setFieldValue('others', e.target.value);
+                            setFieldValue('faceExam.others', e.target.value);
                           }}
                           rows={2}
                         />
