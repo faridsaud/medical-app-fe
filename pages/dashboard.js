@@ -29,9 +29,20 @@ class Dashboard extends Component {
     }
   };
 
+  filterClinicHistories = (clinicHistories = [], searchTerm = '') => {
+    if(!searchTerm){
+      return clinicHistories;
+    }
+    return clinicHistories && clinicHistories.filter(({patient}) => {
+      const fullName = `${patient.firstName || ''} ${patient.lastName || ''}`.toLowerCase();
+      const documentNumber = `${patient.documentNumber || ''}`.toLowerCase();
+      return fullName.includes(searchTerm) || documentNumber.includes(searchTerm);
+    });
+  };
+
 
   render() {
-    const { clinicHistories } = this.state;
+    const { clinicHistories, searchTerm } = this.state;
     return (
       <Page title="Dashboard" id="dashboard">
         <Container className="bx--grid">
@@ -45,7 +56,7 @@ class Dashboard extends Component {
             onChange={(e) => { this.setState({ searchTerm: e.target.value }); }}
           />
           <ClinicHistories
-            clinicHistories={clinicHistories}
+            clinicHistories={this.filterClinicHistories(clinicHistories, searchTerm)}
           />
         </Container>
         <Footer

@@ -73,7 +73,7 @@ class Patient extends Component {
                 <DatePicker
                   datePickerType="single"
                   maxDate={new Date()}
-                  onChange={(dates, formattedDate) => {
+                  onChange={(dates) => {
                     setFieldValue('birthDate', dates[0]);
                   }}
 

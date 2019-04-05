@@ -30,10 +30,10 @@ function ClinicHistories(props) {
       </StructuredListHead>
       <StructuredListBody>
         {
-          clinicHistories.map(({ uuid, patient }) => (
+          clinicHistories && clinicHistories.map(({ uuid, patient }) => (
             <StructuredListRow key={uuid}>
               <StructuredListCell noWrap>
-                {`${patient.firstName} ${patient.lastName}`}
+                {`${patient.firstName || ''} ${patient.lastName || ''}`}
               </StructuredListCell>
               <StructuredListCell>
                 {patient.documentNumber}
