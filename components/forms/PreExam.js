@@ -8,13 +8,13 @@ import {
 import './styles.css';
 
 const PreExamSchema = Yup.object().shape({
-  reason: Yup.string().required('Required'),
-  currentIllness: Yup.string().required('Required'),
+  reason: Yup.string(),
+  currentIllness: Yup.string(),
 });
 
 class PreExam extends Component {
   render() {
-    const { initialValues } = this.props;
+    const { initialValues, onChange } = this.props;
     return (
       <Formik
         initialValues={initialValues}
@@ -30,7 +30,7 @@ class PreExam extends Component {
           errors, touched, setFieldValue, handleChange, values,
         }) => (
           <Form className="bx--grid">
-            {console.log({ errors, values })}
+            {onChange({ errors, values })}
             <div className="bx--row">
               <div className="bx--col">
                 <TextArea
@@ -38,6 +38,7 @@ class PreExam extends Component {
                   id="reason"
                   invalid={errors.reason}
                   invalidText={errors.reason}
+                  value={values.reason}
                   onChange={(e) => {
                     setFieldValue('reason', e.target.value);
                   }}
@@ -51,6 +52,7 @@ class PreExam extends Component {
                   id="currentIllness"
                   invalid={errors.currentIllness}
                   invalidText={errors.currentIllness}
+                  value={values.currentIllness}
                   onChange={(e) => {
                     setFieldValue('currentIllness', e.target.value);
                   }}
@@ -67,6 +69,7 @@ class PreExam extends Component {
 PreExam.propTypes = {
   initialValues: PropTypes.object,
   onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 PreExam.defaultProps = {
@@ -75,6 +78,7 @@ PreExam.defaultProps = {
     currentIllness: '',
   },
   onSubmit: () => {},
+  onChange: () => {},
 };
 
 export default PreExam;

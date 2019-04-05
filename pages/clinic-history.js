@@ -31,6 +31,10 @@ class ClinicHistory extends Component {
     };
   }
 
+  static getInitialProps({query}) {
+    return {query}
+  }
+
   setSelectedIndex = ({index}) =>{
     this.setState({ selectedIndex:index });
   };
@@ -74,13 +78,24 @@ class ClinicHistory extends Component {
       pathologicalHistory: {values: pathologicalHistory},
       nonPathologicalHistory: {values: nonPathologicalHistory},
     } = this.state;
+    const {query:{uuid}} = this.props;
     try {
-      await RestServices.clinicHistory.create({
-        patient,
-        pathologicalHistory,
-        nonPathologicalHistory,
-      })
+      if(uuid){
+        await RestServices.m.update(uuid, {
+          patient,
+          pathologicalHistory,
+          nonPathologicalHistory,
+        });
+      }else{
+        await RestServices.clinicHistory.create({
+          patient,
+          pathologicalHistory,
+          nonPathologicalHistory,
+        });
+      }
+
       toast.success('History Clinic created');
+      Router.push('/dashboard');
     }catch (e) {
       toast.error(e.toString());
     }
@@ -117,6 +132,7 @@ class ClinicHistory extends Component {
 
   render() {
     const { selectedIndex} = this.state;
+    const {query:{uuid}} = this.props;
     return (
       <Page title="Clinic History" id="clinic-history">
         <ContentSwitcherContainer className={'bx--grid'}>
@@ -139,14 +155,24 @@ class ClinicHistory extends Component {
           </ContentSwitcher>
         </ContentSwitcherContainer>
         {this.renderCurrentStep()}
-        <MedicalConsultationsContainer className={'bx--grid'}>
-          <div style={{...productiveHeading03}}>
-            Medical Consultations
-          </div>
-          <MedicalConsultations
-          medicalConsultations={[{uuid: '1', illness: 'Love Sick', date: new Date().toISOString()}]}
-          />
-        </MedicalConsultationsContainer>
+        {
+          uuid &&
+          <MedicalConsultationsContainer className={'bx--grid'}>
+            <MedicalHeaderContainter>
+              <div style={{...productiveHeading03}}>
+                Medical Consultations
+              </div>
+              <Button onClick={() => Router.push(`/medical-consultation?clinic-history-uuid=${uuid}`)}>
+                New Medical Consultation
+              </Button>
+
+            </MedicalHeaderContainter>
+
+            <MedicalConsultations
+              medicalConsultations={[{uuid: '1', illness: 'Love Sick', date: new Date().toISOString()}]}
+            />
+          </MedicalConsultationsContainer>
+        }
         <Footer
           labelOne={""}
           linkTextOne={""}
@@ -179,6 +205,11 @@ const ContentSwitcherContainer = styled.div`
 
 const MedicalConsultationsContainer = styled.div`
   margin-bottom: 8rem;
+`;
+
+const MedicalHeaderContainter = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 

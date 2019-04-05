@@ -8,16 +8,16 @@ import {
 import './styles.css';
 
 const PostExamSchema = Yup.object().shape({
-  diagnosis: Yup.string().required('Required'),
-  treatmentPlan: Yup.string().required('Required'),
-  indications: Yup.string().required('Required'),
-  complementaryExam: Yup.string().required('Required'),
-  observations: Yup.string().required('Required'),
+  diagnosis: Yup.string(),
+  treatmentPlan: Yup.string(),
+  indications: Yup.string(),
+  complementaryExam: Yup.string(),
+  observations: Yup.string(),
 });
 
 class PostExam extends Component {
   render() {
-    const { initialValues } = this.props;
+    const { initialValues, onChange } = this.props;
     return (
       <Formik
         initialValues={initialValues}
@@ -33,7 +33,7 @@ class PostExam extends Component {
           errors, touched, setFieldValue, handleChange, values,
         }) => (
           <Form className="bx--grid">
-            {console.log({ errors, values })}
+            {onChange({ errors, values })}
             <div className="bx--row">
               <div className="bx--col">
                 <TextArea
@@ -41,6 +41,7 @@ class PostExam extends Component {
                   id="diagnosis"
                   invalid={errors.diagnosis}
                   invalidText={errors.diagnosis}
+                  value={values.diagnosis}
                   onChange={(e) => {
                     setFieldValue('diagnosis', e.target.value);
                   }}
@@ -54,6 +55,7 @@ class PostExam extends Component {
                   id="treatmentPlan"
                   invalid={errors.treatmentPlan}
                   invalidText={errors.treatmentPlan}
+                  value={values.treatmentPlan}
                   onChange={(e) => {
                     setFieldValue('treatmentPlan', e.target.value);
                   }}
@@ -67,6 +69,7 @@ class PostExam extends Component {
                   id="indications"
                   invalid={errors.indications}
                   invalidText={errors.indications}
+                  value={values.indications}
                   onChange={(e) => {
                     setFieldValue('indications', e.target.value);
                   }}
@@ -80,6 +83,7 @@ class PostExam extends Component {
                   id="complementaryExam"
                   invalid={errors.complementaryExam}
                   invalidText={errors.complementaryExam}
+                  value={values.complementaryExam}
                   onChange={(e) => {
                     setFieldValue('complementaryExam', e.target.value);
                   }}
@@ -93,6 +97,7 @@ class PostExam extends Component {
                   id="observations"
                   invalid={errors.observations}
                   invalidText={errors.observations}
+                  value={values.observations}
                   onChange={(e) => {
                     setFieldValue('observations', e.target.value);
                   }}
@@ -109,6 +114,7 @@ class PostExam extends Component {
 PostExam.propTypes = {
   initialValues: PropTypes.object,
   onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 PostExam.defaultProps = {
@@ -120,6 +126,7 @@ PostExam.defaultProps = {
     observations: '',
   },
   onSubmit: () => {},
+  onChange: () => {},
 };
 
 export default PostExam;

@@ -10,33 +10,33 @@ import {
 import './styles.css';
 
 const PhysicalExamSchema = Yup.object().shape({
-  hair: Yup.string().required('Required'),
-  implantationLine: Yup.string().required('Required'),
+  hair: Yup.string(),
+  implantationLine: Yup.string(),
   faceExam: Yup.object().shape({
-    wrinkles: Yup.string().required('Required'),
-    volume: Yup.string().required('Required'),
-    dyschromias: Yup.string().required('Required'),
-    vascular: Yup.string().required('Required'),
-    flaccidity: Yup.string().required('Required'),
-    scars: Yup.string().required('Required'),
-    skin: Yup.string().required('Required'),
-    others: Yup.string().required('Required'),
+    wrinkles: Yup.string(),
+    volume: Yup.string(),
+    dyschromias: Yup.string(),
+    vascular: Yup.string(),
+    flaccidity: Yup.string(),
+    scars: Yup.string(),
+    skin: Yup.string(),
+    others: Yup.string(),
   }),
   bodyExam: Yup.object().shape({
-    weight: Yup.number().required('Required'),
-    size: Yup.number().required('Required'),
-    bodyMassIndex: Yup.number().required('Required'),
-    bodyFatPercentage: Yup.number().required('Required'),
-    bodyMusclePercentage: Yup.number().required('Required'),
-    waistCircumference: Yup.number().required('Required'),
-    hipCircumference: Yup.number().required('Required'),
-    bicepsCircumference: Yup.number().required('Required'),
-    quadricepsCircumference: Yup.number().required('Required'),
-    cellulitis: Yup.string().required('Required'),
-    stretchMarks: Yup.boolean().required('Required'),
-    reticularVeins: Yup.boolean().required('Required'),
-    telangiectasia: Yup.boolean().required('Required'),
-    others: Yup.string().required('Required'),
+    weight: Yup.number(),
+    size: Yup.number(),
+    bodyMassIndex: Yup.number(),
+    bodyFatPercentage: Yup.number(),
+    bodyMusclePercentage: Yup.number(),
+    waistCircumference: Yup.number(),
+    hipCircumference: Yup.number(),
+    bicepsCircumference: Yup.number(),
+    quadricepsCircumference: Yup.number(),
+    cellulitis: Yup.string(),
+    stretchMarks: Yup.boolean(),
+    reticularVeins: Yup.boolean(),
+    telangiectasia: Yup.boolean(),
+    others: Yup.string(),
   }),
 });
 
@@ -59,7 +59,6 @@ class PhysicalExam extends Component {
         }) => (
           <Form className="bx--grid">
             {onChange({ values, errors })}
-            {console.log({ values, errors })}
             <div className="bx--row">
               <div className="bx--col">
                 <Accordion>
@@ -73,6 +72,7 @@ class PhysicalExam extends Component {
                           id="hair"
                           invalid={errors.hair}
                           invalidText={errors.hair}
+                          value={values.hair}
                           onChange={(e) => {
                             setFieldValue('hair', e.target.value);
                           }}
@@ -87,6 +87,7 @@ class PhysicalExam extends Component {
                           id="implantationLine"
                           invalid={errors.implantationLine}
                           invalidText={errors.implantationLine}
+                          value={values.implantationLine}
                           onChange={(e) => {
                             setFieldValue('implantationLine', e.target.value);
                           }}
@@ -106,6 +107,7 @@ class PhysicalExam extends Component {
                           id="wrinkles"
                           invalid={errors.wrinkles}
                           invalidText={errors.wrinkles}
+                          value={values.wrinkles}
                           onChange={(e) => {
                             setFieldValue('wrinkles', e.target.value);
                           }}
@@ -120,6 +122,7 @@ class PhysicalExam extends Component {
                           id="volume"
                           invalid={errors.volume}
                           invalidText={errors.volume}
+                          value={values.volume}
                           onChange={(e) => {
                             setFieldValue('volume', e.target.value);
                           }}
@@ -134,6 +137,7 @@ class PhysicalExam extends Component {
                           id="dyschromias"
                           invalid={errors.dyschromias}
                           invalidText={errors.dyschromias}
+                          value={values.dyschromias}
                           onChange={(e) => {
                             setFieldValue('dyschromias', e.target.value);
                           }}
@@ -148,6 +152,7 @@ class PhysicalExam extends Component {
                           id="vascular"
                           invalid={errors.vascular}
                           invalidText={errors.vascular}
+                          value={values.vascular}
                           onChange={(e) => {
                             setFieldValue('vascular', e.target.value);
                           }}
@@ -162,6 +167,7 @@ class PhysicalExam extends Component {
                           id="flaccidity"
                           invalid={errors.flaccidity}
                           invalidText={errors.flaccidity}
+                          value={values.flaccidity}
                           onChange={(e) => {
                             setFieldValue('flaccidity', e.target.value);
                           }}
@@ -176,6 +182,7 @@ class PhysicalExam extends Component {
                           id="scars"
                           invalid={errors.scars}
                           invalidText={errors.scars}
+                          value={values.scars}
                           onChange={(e) => {
                             setFieldValue('scars', e.target.value);
                           }}
@@ -190,6 +197,7 @@ class PhysicalExam extends Component {
                           id="skin"
                           invalid={errors.skin}
                           invalidText={errors.skin}
+                          value={values.skin}
                           onChange={(e) => {
                             setFieldValue('skin', e.target.value);
                           }}
@@ -204,6 +212,7 @@ class PhysicalExam extends Component {
                           id="others"
                           invalid={errors.others}
                           invalidText={errors.others}
+                          value={values.others}
                           onChange={(e) => {
                             setFieldValue('others', e.target.value);
                           }}
@@ -222,8 +231,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.weight"
                           invalid={errors.bodyExam && errors.bodyExam.weight}
                           invalidText={errors.bodyExam && errors.bodyExam.weight}
+                          value={values.bodyExam && values.bodyExam.weight}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.weight', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.weight', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -233,8 +243,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.size"
                           invalid={errors.bodyExam && errors.bodyExam.size}
                           invalidText={errors.bodyExam && errors.bodyExam.size}
+                          value={values.bodyExam && values.bodyExam.size}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.size', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.size', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -244,8 +255,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.bodyMassIndex"
                           invalid={errors.bodyExam && errors.bodyExam.bodyMassIndex}
                           invalidText={errors.bodyExam && errors.bodyExam.bodyMassIndex}
+                          value={values.bodyExam && values.bodyExam.bodyMassIndex}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.bodyMassIndex', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.bodyMassIndex', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -257,8 +269,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.bodyFatPercentage"
                           invalid={errors.bodyExam && errors.bodyExam.bodyFatPercentage}
                           invalidText={errors.bodyExam && errors.bodyExam.bodyFatPercentage}
+                          value={values.bodyExam && values.bodyExam.bodyFatPercentage}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.bodyFatPercentage', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.bodyFatPercentage', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -268,8 +281,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.bodyMusclePercentage"
                           invalid={errors.bodyExam && errors.bodyExam.bodyMusclePercentage}
                           invalidText={errors.bodyExam && errors.bodyExam.bodyMusclePercentage}
+                          value={values.bodyExam && values.bodyExam.bodyMusclePercentage}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.bodyMusclePercentage', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.bodyMusclePercentage', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -279,8 +293,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.hipCircumference"
                           invalid={errors.bodyExam && errors.bodyExam.hipCircumference}
                           invalidText={errors.bodyExam && errors.bodyExam.hipCircumference}
+                          value={values.bodyExam && values.bodyExam.hipCircumference}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.hipCircumference', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.hipCircumference', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -292,8 +307,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.bicepsCircumference"
                           invalid={errors.bodyExam && errors.bodyExam.bicepsCircumference}
                           invalidText={errors.bodyExam && errors.bodyExam.bicepsCircumference}
+                          value={values.bodyExam && values.bodyExam.bicepsCircumference}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.bicepsCircumference', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.bicepsCircumference', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -303,8 +319,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.quadricepsCircumference"
                           invalid={errors.bodyExam && errors.bodyExam.quadricepsCircumference}
                           invalidText={errors.bodyExam && errors.bodyExam.quadricepsCircumference}
+                          value={values.bodyExam && values.bodyExam.quadricepsCircumference}
                           onChange={(e) => {
-                            setFieldValue('bodyExam.quadricepsCircumference', parseFloat(e.target.value));
+                            setFieldValue('bodyExam.quadricepsCircumference', parseFloat(e.target.value) || 0);
                           }}
                         />
                       </div>
@@ -314,6 +331,7 @@ class PhysicalExam extends Component {
                           id="bodyExam.cellulitis"
                           invalid={errors.bodyExam && errors.bodyExam.cellulitis}
                           invalidText={errors.bodyExam && errors.bodyExam.cellulitis}
+                          value={values.bodyExam && values.bodyExam.cellulitis}
                           onChange={(e) => {
                             setFieldValue('bodyExam.cellulitis', e.target.value);
                           }}
@@ -329,8 +347,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.stretchMarks"
                           invalid={errors.bodyExam && errors.bodyExam.stretchMarks}
                           invalidText={errors.bodyExam && errors.bodyExam.stretchMarks}
+                          toggled={values.bodyExam && values.bodyExam.stretchMarks}
                           onToggle={() => {
-                            setFieldValue('bodyExam.stretchMarks', !values.bodyExam.stretchMarks);
+                            setFieldValue('bodyExam.stretchMarks', values.bodyExam && !values.bodyExam.stretchMarks);
                           }}
                         />
                       </div>
@@ -342,8 +361,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.reticularVeins"
                           invalid={errors.bodyExam && errors.bodyExam.reticularVeins}
                           invalidText={errors.bodyExam && errors.bodyExam.reticularVeins}
+                          toggled={values.bodyExam && values.bodyExam.reticularVeins}
                           onToggle={() => {
-                            setFieldValue('bodyExam.reticularVeins', !values.bodyExam.reticularVeins);
+                            setFieldValue('bodyExam.reticularVeins', values.bodyExam && !values.bodyExam.reticularVeins);
                           }}
                         />
                       </div>
@@ -355,8 +375,9 @@ class PhysicalExam extends Component {
                           id="bodyExam.telangiectasia"
                           invalid={errors.bodyExam && errors.bodyExam.telangiectasia}
                           invalidText={errors.bodyExam && errors.bodyExam.telangiectasia}
+                          toggled={values.bodyExam && values.bodyExam.telangiectasia}
                           onToggle={() => {
-                            setFieldValue('bodyExam.telangiectasia', !values.bodyExam.telangiectasia);
+                            setFieldValue('bodyExam.telangiectasia', values.bodyExam && !values.bodyExam.telangiectasia);
                           }}
                         />
                       </div>
@@ -365,9 +386,10 @@ class PhysicalExam extends Component {
                       <div className="bx--col bx--col-sm-4">
                         <TextInput
                           labelText="Others"
-                          id="others"
+                          id="bodyExam.others"
                           invalid={errors.bodyExam && errors.bodyExam.others}
                           invalidText={errors.bodyExam && errors.bodyExam.others}
+                          value={values.bodyExam && values.bodyExam.others}
                           onChange={(e) => {
                             setFieldValue('bodyExam.others', e.target.value);
                           }}
@@ -407,7 +429,6 @@ PhysicalExam.defaultProps = {
       hipCircumference: 0,
       bicepsCircumference: 0,
       quadricepsCircumference: 0,
-
       cellulitis: '',
       stretchMarks: false,
       reticularVeins: false,

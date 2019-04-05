@@ -5,42 +5,125 @@ import Page from '../components/commons/Page/Page';
 import PostExam from '../components/forms/PostExam';
 import PhysicalExam from '../components/forms/PhysicalExam';
 import PreExam from '../components/forms/PreExam';
+import RestServices from '../services/rest';
+import { toast } from 'react-toastify';
+import Router from 'next/dist/client/router';
 
 class MedicalConsultation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedIndex: 0,
+      preExam: {
+        values: {},
+        errors: {},
+      },
+      physicalExam: {
+        values: {},
+        errors: {},
+      },
+      postExam: {
+        values: {},
+        errors: {},
+      },
     };
   }
 
-  setSelectedIndex = ({index}) =>{
-    this.setState({ selectedIndex:index });
+  static getInitialProps({query}) {
+    return {query}
+  }
+
+  setSelectedIndex = ({ index }) => {
+    this.setState({ selectedIndex: index });
+  };
+
+  setPreExamValues = ({values, errors}) => {
+    const {preExam} = this.state;
+    if(JSON.stringify({values, errors})!== JSON.stringify(preExam))
+      this.setState({
+        preExam:{
+          values,
+          errors,
+        }
+      })
+  };
+
+  setPhysicalExamValues = ({values, errors}) => {
+    const {physicalExam} = this.state;
+    if(JSON.stringify({values, errors})!== JSON.stringify(physicalExam))
+      this.setState({
+        physicalExam:{
+          values,
+          errors,
+        }
+      })
+  };
+
+  setPostExamValues = ({values, errors}) => {
+    const {postExam} = this.state;
+    if(JSON.stringify({values, errors})!== JSON.stringify(postExam))
+      this.setState({
+        postExam:{
+          values,
+          errors,
+        }
+      })
+  };
+
+  handleSave = async () => {
+    const {
+      preExam:{values: preExam},
+      physicalExam:{values: physicalExam},
+      postExam:{values: postExam} } = this.state;
+    const { query: { uuid, 'clinic-history-uuid': clinicHistory } } = this.props;
+    try {
+      if (uuid) {
+        await RestServices.medicalConsultation.update(uuid, {
+          clinicHistory,
+            ...preExam,
+          physicalExam,
+          ...postExam,
+        });
+      } else {
+        await RestServices.medicalConsultation.create({
+          clinicHistory,
+          ...preExam,
+          physicalExam,
+          ...postExam,
+        });
+      }
+      toast.success('Medical Consultation created');
+      Router.push('/dashboard');
+    } catch (e) {
+      toast.error(e.toString());
+
+    }
+
   };
 
   renderCurrentStep = () => {
-    const { selectedIndex } = this.state;
+    const { selectedIndex, preExam, physicalExam, postExam } = this.state;
     switch (selectedIndex) {
       case 0: {
         return (
           <FormContainer>
-            <PreExam/>
+            <PreExam onChange={this.setPreExamValues} initialValues={{...preExam.values}}/>
           </FormContainer>
-        )
+        );
       }
       case 1: {
         return (
           <FormContainer>
-            <PhysicalExam />
+            <PhysicalExam onChange={this.setPhysicalExamValues} initialValues={{...physicalExam.values}}/>
           </FormContainer>
-        )
+        );
       }
       case 2: {
         return (
           <FormContainer>
-            <PostExam/>
+            <PostExam onChange={this.setPostExamValues} initialValues={{...postExam.values}}/>
           </FormContainer>
-        )
+        );
       }
     }
   };
@@ -71,13 +154,14 @@ class MedicalConsultation extends Component {
         </ContentSwitcherContainer>
         {this.renderCurrentStep()}
         <Footer
-          labelOne={""}
-          linkTextOne={""}
-          linkHrefOne={""}
-          labelTwo={""}
-          linkTextTwo={""}
-          linkHrefTwo={""}
+          labelOne={''}
+          linkTextOne={''}
+          linkHrefOne={''}
+          labelTwo={''}
+          linkTextTwo={''}
+          linkHrefTwo={''}
           buttonText={'Save'}
+          onClick={this.handleSave}
         />
       </Page>
     );

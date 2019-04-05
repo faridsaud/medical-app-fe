@@ -1,65 +1,96 @@
 import React, { Component } from 'react';
+import {
+  ModalBody, TextInput, ComposedModal, ModalHeader, ModalFooter,
+} from 'carbon-components-react';
 import styled from 'styled-components';
-import { Footer, Search } from 'carbon-components-react';
+import { toast } from 'react-toastify';
 import Router from 'next/router';
-import Page from '../components/commons/Page/Page';
-import ClinicHistories from '../components/commons/Table/ClinicHistories';
+import Head from '../components/head';
+import RestServices from '../services/rest';
 
-class Dashboard extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: '',
+      email: '',
+      password: '',
+      open: true,
     };
   }
 
+  handleLogin = async () => {
+    try {
+      const {email, password} = this.state;
+      await RestServices.auth.login(email, password);
+      Router.push('/dashboard');
+    } catch (e) {
+      toast.error(e.toString());
+    }
+  };
+
 
   render() {
+    const { email, password } = this.state;
     return (
-      <Page title="Dashboard" id="dashboard">
-        <Container className="bx--grid">
-          <Search
-            className="some-class"
-            name=""
-            defaultValue=""
-            labelText="Filter clinic histories"
-            closeButtonLabelText=""
-            placeHolderText="Search by name or document number"
-            onChange={(e) => { this.setState({ searchTerm: e.target.value }); }}
+      <div>
+        <Head title="Login" />
+        <ComposedModal open={true}>
+          <ModalHeader
+            title="Login"
+            iconDescription="Close"
           />
-          <ClinicHistories
-            clinicHistories={[{
-              uuid: '1',
-              patient: {
-                firstName: 'Farid',
-                lastName: 'Saud',
-                documentNumber: Date.now(),
-              },
-            }]}
+          <ModalBody>
+            <div className="bx--grid">
+              <div className="bx--row">
+                <div className="bx--col padded-bottom">
+                  <TextInput
+                    labelText="Email"
+                    id="email"
+                    onChange={(e) => {
+                      this.setState({ email: e.target.value });
+                    }}
+                    type="email"
+                    value={email}
+                  />
+                </div>
+              </div>
+              <div className="bx--row">
+                <div className="bx--col">
+                  <TextInput
+                    labelText="Password"
+                    id="password"
+                    onChange={(e) => {
+                      this.setState({ password: e.target.value });
+                    }}
+                    type="password"
+                    value={password}
+                  />
+                </div>
+              </div>
+            </div>
+          </ModalBody>
+          <ModalFooter
+            primaryButtonText="Login"
+            primaryButtonDisabled={false}
+            secondaryButtonText=""
+            onRequestClose={()=>{this.setState({open: true})}}
+            closeModal={()=>{this.setState({open: true})}}
+            onRequestSubmit={this.handleLogin}
           />
-        </Container>
-        <Footer
-          labelOne=""
-          linkTextOne=""
-          linkHrefOne=""
-          labelTwo=""
-          linkTextTwo=""
-          linkHrefTwo=""
-          buttonText="New Clinic History"
-          onClick={() => Router.push('/clinic-history')}
-        />
-      </Page>
+        </ComposedModal>
+
+        <style jsx>
+          {`
+            .padded-bottom {
+              padding-bottom: 2rem;
+            }
+        `}
+        </style>
+      </div>
     );
   }
 }
 
-Dashboard.propTypes = {};
+Login.propTypes = {};
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 4rem;
-`;
-
-
-export default Dashboard;
+export default Login;
