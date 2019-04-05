@@ -5,7 +5,7 @@ import config from '../../config';
 const instance = axios.create({
   baseURL: config.API_URL,
   timeout: 10000,
+  withCredentials: true,
 });
 
 export default instance;
-

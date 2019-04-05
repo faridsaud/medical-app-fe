@@ -70,9 +70,9 @@ class ClinicHistory extends Component {
 
   handleSave = async () => {
     const {
-      patient,
-      pathologicalHistory,
-      nonPathologicalHistory,
+      patient: {values: patient},
+      pathologicalHistory: {values: pathologicalHistory},
+      nonPathologicalHistory: {values: nonPathologicalHistory},
     } = this.state;
     try {
       await RestServices.clinicHistory.create({
