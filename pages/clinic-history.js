@@ -35,42 +35,45 @@ class ClinicHistory extends Component {
   componentDidMount = async () => {
     try {
       const {query:{uuid}} = this.props;
-      const {data: {
-        patient,
-        pathologicalHistory,
-        nonPathologicalHistory,
-        medicalConsultations,
-      }} = await RestServices.clinicHistory.get(uuid);
-      this.setState({
-        patient:{
-          values:{
-            ...patient,
-          },
-          errors:{
+      if(uuid){
+        const {data: {
+          patient,
+          pathologicalHistory,
+          nonPathologicalHistory,
+          medicalConsultations,
+        }} = await RestServices.clinicHistory.get(uuid);
+        this.setState({
+          patient:{
+            values:{
+              ...patient,
+            },
+            errors:{
 
+            },
           },
-        },
-        pathologicalHistory:{
-          values:{
-            ...pathologicalHistory,
-          },
-          errors:{
+          pathologicalHistory:{
+            values:{
+              ...pathologicalHistory,
+            },
+            errors:{
 
+            },
           },
-        },
-        nonPathologicalHistory:{
-          values:{
-            ...nonPathologicalHistory,
-          },
-          errors:{
+          nonPathologicalHistory:{
+            values:{
+              ...nonPathologicalHistory,
+            },
+            errors:{
 
+            },
           },
-        },
-        medicalConsultations: medicalConsultations.map(medicalConsultation => ({
-          uuid: medicalConsultation._id,
-          ...medicalConsultation,
-        }))
-      })
+          medicalConsultations: medicalConsultations.map(medicalConsultation => ({
+            uuid: medicalConsultation._id,
+            ...medicalConsultation,
+          }))
+        })
+      }
+
     } catch (e) {
 
     }

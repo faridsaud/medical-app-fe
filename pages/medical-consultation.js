@@ -32,47 +32,50 @@ class MedicalConsultation extends Component {
   componentDidMount = async () => {
     try {
       const {query:{uuid}} = this.props;
-      const {data: {
-        physicalExam,
-        reason,
-        currentIllness,
-        diagnosis,
-        treatmentPlan,
-        indications,
-        complementaryExam,
-        observations,
-      }} = await RestServices.medicalConsultation.get(uuid);
-      this.setState({
-        preExam:{
-          values:{
-            reason,
-            currentIllness,
-          },
-          errors:{
+      if(uuid){
+        const {data: {
+          physicalExam,
+          reason,
+          currentIllness,
+          diagnosis,
+          treatmentPlan,
+          indications,
+          complementaryExam,
+          observations,
+        }} = await RestServices.medicalConsultation.get(uuid);
+        this.setState({
+          preExam:{
+            values:{
+              reason,
+              currentIllness,
+            },
+            errors:{
 
+            },
           },
-        },
-        physicalExam:{
-          values:{
-            ...physicalExam,
-          },
-          errors:{
+          physicalExam:{
+            values:{
+              ...physicalExam,
+            },
+            errors:{
 
+            },
           },
-        },
-        postExam:{
-          values:{
-            diagnosis,
-            treatmentPlan,
-            indications,
-            complementaryExam,
-            observations,
-          },
-          errors:{
+          postExam:{
+            values:{
+              diagnosis,
+              treatmentPlan,
+              indications,
+              complementaryExam,
+              observations,
+            },
+            errors:{
 
+            },
           },
-        },
-      })
+        })
+      }
+
     } catch (e) {
 
     }
