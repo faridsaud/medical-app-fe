@@ -62,7 +62,6 @@ class ClinicHistory extends Component {
 
   render() {
     const { selectedIndex, patient } = this.state;
-    console.log({patient});
     return (
       <Page title="Clinic History" id="clinic-history">
         <ContentSwitcherContainer className={'bx--grid'}>

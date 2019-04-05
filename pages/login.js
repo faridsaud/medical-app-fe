@@ -3,6 +3,8 @@ import {
   ModalBody, TextInput, ComposedModal, ModalHeader, ModalFooter,
 } from 'carbon-components-react';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
+import Router from 'next/router';
 import Head from '../components/head';
 import RestServices from '../services/rest';
 
@@ -20,8 +22,9 @@ class Login extends Component {
     try {
       const {email, password} = this.state;
       await RestServices.auth.login(email, password);
+      Router.push('/');
     } catch (e) {
-
+      toast.error(e.toString());
     }
   };
 
