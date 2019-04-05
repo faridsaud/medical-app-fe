@@ -29,6 +29,7 @@ class Patient extends Component {
     const { initialValues, onChange } = this.props;
     return (
       <Formik
+        enableReinitialize
         initialValues={initialValues}
         validationSchema={PatientSchema}
         onSubmit={(values, { setSubmitting }) => {
@@ -69,7 +70,15 @@ class Patient extends Component {
                 />
               </div>
               <div className="bx--col bx--col-sm-4">
-                <DatePicker datePickerType="single" maxDate={new Date()}>
+                <DatePicker
+                  datePickerType="single"
+                  maxDate={new Date()}
+                  onChange={(dates, formattedDate) => {
+                    setFieldValue('birthDate', dates[0]);
+                  }}
+
+                  value={values.birthDate}
+                >
                   <DatePickerInput
                     id="birthDate"
                     labelText="Date of Birth"
@@ -77,10 +86,6 @@ class Patient extends Component {
                     placeholder="mm/dd/yyyy"
                     invalid={errors.birthDate}
                     invalidText={errors.birthDate}
-                    value={values.birthDate}
-                    onChange={(e) => {
-                      setFieldValue('birthDate', e.target.value);
-                    }}
                   />
                 </DatePicker>
               </div>
@@ -161,7 +166,7 @@ class Patient extends Component {
                   labelText="City"
                   id="city"
                   invalid={errors.placeOfResidence && errors.placeOfResidence.city}
-                  invalidText={errors.placeOfResidence &&errors.placeOfResidence.city}
+                  invalidText={errors.placeOfResidence && errors.placeOfResidence.city}
                   value={values.placeOfResidence && values.placeOfResidence.city}
                   type="text"
                   onChange={(e) => {
@@ -172,7 +177,7 @@ class Patient extends Component {
             </div>
 
             <div className="bx--row">
-              <div className="bx--col bx--col-sm-4">
+              <div className="bx--col bx--col-sm-12">
                 <TextInput
                   labelText="Address"
                   id="address"

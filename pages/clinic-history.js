@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Button, Switch, ContentSwitcher, Footer } from 'carbon-components-react';
 import { productiveHeading03 } from '@carbon/type';
+import _ from 'lodash';
 import Patient from '../components/forms/Patient';
 import Page from '../components/commons/Page/Page';
 import PathologicalHistory from '../components/forms/PathologicalHistory';
@@ -31,6 +32,45 @@ class ClinicHistory extends Component {
     };
   }
 
+  componentDidMount = async () => {
+    try {
+      const {query:{uuid}} = this.props;
+      const {data: {
+        patient,
+        pathologicalHistory,
+        nonPathologicalHistory
+      }} = await RestServices.clinicHistory.get(uuid);
+      this.setState({
+        patient:{
+          values:{
+            ...patient,
+          },
+          errors:{
+
+          },
+        },
+        pathologicalHistory:{
+          values:{
+            ...pathologicalHistory,
+          },
+          errors:{
+
+          },
+        },
+        nonPathologicalHistory:{
+          values:{
+            ...nonPathologicalHistory,
+          },
+          errors:{
+
+          },
+        },
+      })
+    } catch (e) {
+
+    }
+  };
+
   static getInitialProps({query}) {
     return {query}
   }
@@ -41,7 +81,7 @@ class ClinicHistory extends Component {
 
   setPatientValues = ({values, errors}) => {
     const {patient} = this.state;
-    if(JSON.stringify({values, errors})!== JSON.stringify(patient))
+    if(JSON.stringify({values, errors})!== JSON.stringify(patient) && !_.isEmpty(values))
     this.setState({
       patient:{
         values,
@@ -52,7 +92,7 @@ class ClinicHistory extends Component {
 
   setPathologicalHistoryValues = ({values, errors}) => {
     const {pathologicalHistory} = this.state;
-    if(JSON.stringify({values, errors})!== JSON.stringify(pathologicalHistory))
+    if(JSON.stringify({values, errors})!== JSON.stringify(pathologicalHistory) && !_.isEmpty(values))
       this.setState({
         pathologicalHistory:{
           values,
@@ -63,7 +103,7 @@ class ClinicHistory extends Component {
 
   setNonPathologicalHistoryValues = ({values, errors}) => {
     const {nonPathologicalHistory} = this.state;
-    if(JSON.stringify({values, errors})!== JSON.stringify(nonPathologicalHistory))
+    if(JSON.stringify({values, errors})!== JSON.stringify(nonPathologicalHistory) && !_.isEmpty(values))
       this.setState({
         nonPathologicalHistory:{
           values,
@@ -81,7 +121,7 @@ class ClinicHistory extends Component {
     const {query:{uuid}} = this.props;
     try {
       if(uuid){
-        await RestServices.m.update(uuid, {
+        await RestServices.clinicHistory.update(uuid, {
           patient,
           pathologicalHistory,
           nonPathologicalHistory,
@@ -133,6 +173,7 @@ class ClinicHistory extends Component {
   render() {
     const { selectedIndex} = this.state;
     const {query:{uuid}} = this.props;
+    console.log(this.state);
     return (
       <Page title="Clinic History" id="clinic-history">
         <ContentSwitcherContainer className={'bx--grid'}>
