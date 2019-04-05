@@ -8,16 +8,16 @@ import {
 import './styles.css';
 
 const PathologicalHistorySchema = Yup.object().shape({
-  personal: Yup.string().required('Required'),
-  family: Yup.string().required('Required'),
-  allergic: Yup.string().required('Required'),
-  surgical: Yup.string().required('Required'),
-  hospital: Yup.string().required('Required'),
+  personal: Yup.string(),
+  family: Yup.string(),
+  allergic: Yup.string(),
+  surgical: Yup.string(),
+  hospital: Yup.string(),
 });
 
 class PathologicalHistory extends Component {
   render() {
-    const { initialValues } = this.props;
+    const { initialValues, onChange } = this.props;
     return (
       <Formik
         initialValues={initialValues}
@@ -33,6 +33,7 @@ class PathologicalHistory extends Component {
           errors, touched, setFieldValue, handleChange, values,
         }) => (
           <Form className="bx--grid">
+            {onChange({ values, errors })}
             <div className="bx--row">
               <div className="bx--col">
                 <TextArea
@@ -40,6 +41,7 @@ class PathologicalHistory extends Component {
                   id="personal"
                   invalid={errors.personal}
                   invalidText={errors.personal}
+                  value={values.personal}
                   onChange={(e) => {
                     setFieldValue('personal', e.target.value);
                   }}
@@ -54,6 +56,7 @@ class PathologicalHistory extends Component {
                   id="family"
                   invalid={errors.family}
                   invalidText={errors.family}
+                  value={values.family}
                   onChange={(e) => {
                     setFieldValue('family', e.target.value);
                   }}
@@ -68,6 +71,7 @@ class PathologicalHistory extends Component {
                   id="allergic"
                   invalid={errors.allergic}
                   invalidText={errors.allergic}
+                  value={values.allergic}
                   onChange={(e) => {
                     setFieldValue('allergic', e.target.value);
                   }}
@@ -82,6 +86,7 @@ class PathologicalHistory extends Component {
                   id="surgical"
                   invalid={errors.surgical}
                   invalidText={errors.surgical}
+                  value={values.surgical}
                   onChange={(e) => {
                     setFieldValue('surgical', e.target.value);
                   }}
@@ -96,6 +101,7 @@ class PathologicalHistory extends Component {
                   id="hospital"
                   invalid={errors.hospital}
                   invalidText={errors.hospital}
+                  value={values.hospital}
                   onChange={(e) => {
                     setFieldValue('hospital', e.target.value);
                   }}
@@ -113,6 +119,7 @@ class PathologicalHistory extends Component {
 PathologicalHistory.propTypes = {
   initialValues: PropTypes.object,
   onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 PathologicalHistory.defaultProps = {
@@ -124,6 +131,7 @@ PathologicalHistory.defaultProps = {
     hospital: '',
   },
   onSubmit: () => {},
+  onChange: () => {},
 };
 
 export default PathologicalHistory;

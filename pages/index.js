@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Footer, Search } from 'carbon-components-react';
+import Router from 'next/router';
 import Page from '../components/commons/Page/Page';
 import ClinicHistories from '../components/commons/Table/ClinicHistories';
 
@@ -45,6 +46,7 @@ class Dashboard extends Component {
           linkTextTwo=""
           linkHrefTwo=""
           buttonText="New Clinic History"
+          onClick={() => Router.push('/clinic-history')}
         />
       </Page>
     );

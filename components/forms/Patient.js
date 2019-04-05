@@ -12,15 +12,15 @@ const PatientSchema = Yup.object().shape({
   firstName: Yup.string().required('Required'),
   lastName: Yup.string().required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
-  birthDate: Yup.date().required('Required'),
-  civilStatus: Yup.string().required('Required'),
-  phoneNumber: Yup.string().required('Required'),
-  documentNumber: Yup.string().required('Required'),
-  occupation: Yup.string().required('Required'),
+  birthDate: Yup.date(),
+  civilStatus: Yup.string(),
+  phoneNumber: Yup.string(),
+  documentNumber: Yup.string(),
+  occupation: Yup.string(),
   placeOfResidence: Yup.object().shape({
-    city: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    address: Yup.string().required('Required'),
+    city: Yup.string(),
+    country: Yup.string(),
+    address: Yup.string(),
   }),
 });
 
@@ -50,6 +50,7 @@ class Patient extends Component {
                   id="firstName"
                   invalid={errors.firstName}
                   invalidText={errors.firstName}
+                  value={values.firstName}
                   onChange={(e) => {
                     setFieldValue('firstName', e.target.value);
                   }}
@@ -61,6 +62,7 @@ class Patient extends Component {
                   id="lastName"
                   invalid={errors.lastName}
                   invalidText={errors.lastName}
+                  value={values.lastName}
                   onChange={(e) => {
                     setFieldValue('lastName', e.target.value);
                   }}
@@ -75,6 +77,7 @@ class Patient extends Component {
                     placeholder="mm/dd/yyyy"
                     invalid={errors.birthDate}
                     invalidText={errors.birthDate}
+                    value={values.birthDate}
                     onChange={(e) => {
                       setFieldValue('birthDate', e.target.value);
                     }}
@@ -89,6 +92,7 @@ class Patient extends Component {
                   id="email"
                   invalid={errors.email}
                   invalidText={errors.email}
+                  value={values.email}
                   type="email"
                   onChange={(e) => {
                     setFieldValue('email', e.target.value);
@@ -104,6 +108,7 @@ class Patient extends Component {
                   }}
                   invalid={errors.civilStatus}
                   invalidText={errors.civilStatus}
+                  value={values.civilStatus}
                   labelText="Civil Status"
                 >
                   <SelectItem value="single" text="Single" />
@@ -116,6 +121,7 @@ class Patient extends Component {
                   id="documentNumber"
                   invalid={errors.documentNumber}
                   invalidText={errors.documentNumber}
+                  value={values.documentNumber}
                   type="text"
                   onChange={(e) => {
                     setFieldValue('documentNumber', e.target.value);
@@ -130,6 +136,7 @@ class Patient extends Component {
                   id="occupation"
                   invalid={errors.occupation}
                   invalidText={errors.occupation}
+                  value={values.occupation}
                   type="text"
                   onChange={(e) => {
                     setFieldValue('occupation', e.target.value);
@@ -140,8 +147,9 @@ class Patient extends Component {
                 <TextInput
                   labelText="Country"
                   id="country"
-                  invalid={errors.country}
-                  invalidText={errors.country}
+                  invalid={errors.placeOfResidence && errors.placeOfResidence.country}
+                  invalidText={errors.placeOfResidence && errors.placeOfResidence.country}
+                  value={values.placeOfResidence && values.placeOfResidence.country}
                   type="text"
                   onChange={(e) => {
                     setFieldValue('placeOfResidence.country', e.target.value);
@@ -152,8 +160,9 @@ class Patient extends Component {
                 <TextInput
                   labelText="City"
                   id="city"
-                  invalid={errors.city}
-                  invalidText={errors.city}
+                  invalid={errors.placeOfResidence && errors.placeOfResidence.city}
+                  invalidText={errors.placeOfResidence &&errors.placeOfResidence.city}
+                  value={values.placeOfResidence && values.placeOfResidence.city}
                   type="text"
                   onChange={(e) => {
                     setFieldValue('placeOfResidence.city', e.target.value);
@@ -167,8 +176,9 @@ class Patient extends Component {
                 <TextInput
                   labelText="Address"
                   id="address"
-                  invalid={errors.address}
-                  invalidText={errors.address}
+                  invalid={errors.placeOfResidence && errors.placeOfResidence.address}
+                  invalidText={errors.placeOfResidence && errors.placeOfResidence.address}
+                  value={values.placeOfResidence && values.placeOfResidence.address}
                   type="text"
                   onChange={(e) => {
                     setFieldValue('placeOfResidence.address', e.target.value);

@@ -7,13 +7,27 @@ import Page from '../components/commons/Page/Page';
 import PathologicalHistory from '../components/forms/PathologicalHistory';
 import NonPathologicalHistory from '../components/forms/NonPathologicalHistory';
 import MedicalConsultations from '../components/commons/Table/MedicalConsultations';
+import RestServices from '../services/rest';
+import Router from 'next/router';
+import { toast } from 'react-toastify';
 
 class ClinicHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedIndex: 0,
-      patient: {},
+      patient: {
+        values: {},
+        errors: {},
+      },
+      pathologicalHistory: {
+        values: {},
+        errors: {},
+      },
+      nonPathologicalHistory: {
+        values: {},
+        errors: {},
+      },
     };
   }
 
@@ -32,27 +46,68 @@ class ClinicHistory extends Component {
     })
   };
 
+  setPathologicalHistoryValues = ({values, errors}) => {
+    const {pathologicalHistory} = this.state;
+    if(JSON.stringify({values, errors})!== JSON.stringify(pathologicalHistory))
+      this.setState({
+        pathologicalHistory:{
+          values,
+          errors,
+        }
+      })
+  };
+
+  setNonPathologicalHistoryValues = ({values, errors}) => {
+    const {nonPathologicalHistory} = this.state;
+    if(JSON.stringify({values, errors})!== JSON.stringify(nonPathologicalHistory))
+      this.setState({
+        nonPathologicalHistory:{
+          values,
+          errors,
+        }
+      })
+  };
+
+  handleSave = async () => {
+    const {
+      patient,
+      pathologicalHistory,
+      nonPathologicalHistory,
+    } = this.state;
+    try {
+      await RestServices.clinicHistory.create({
+        patient,
+        pathologicalHistory,
+        nonPathologicalHistory,
+      })
+      toast.success('History Clinic created');
+    }catch (e) {
+      toast.error(e.toString());
+    }
+
+  };
+
   renderCurrentStep = () => {
-    const { selectedIndex } = this.state;
+    const { selectedIndex, patient, nonPathologicalHistory, pathologicalHistory  } = this.state;
     switch (selectedIndex) {
       case 0: {
         return (
           <FormContainer>
-            <Patient onChange={this.setPatientValues}/>
+            <Patient onChange={this.setPatientValues} initialValues={{...patient.values}}/>
           </FormContainer>
         )
       }
       case 1: {
         return (
           <FormContainer>
-            <PathologicalHistory />
+            <PathologicalHistory onChange={this.setPathologicalHistoryValues} initialValues={{...pathologicalHistory.values}}/>
           </FormContainer>
         )
       }
       case 2: {
         return (
           <FormContainer>
-            <NonPathologicalHistory onChange={({values, errors})=>{ console.log({values, errors})}}/>
+            <NonPathologicalHistory onChange={this.setNonPathologicalHistoryValues} initialValues={{...nonPathologicalHistory.values}}/>
           </FormContainer>
         )
       }
@@ -61,7 +116,7 @@ class ClinicHistory extends Component {
 
 
   render() {
-    const { selectedIndex, patient } = this.state;
+    const { selectedIndex} = this.state;
     return (
       <Page title="Clinic History" id="clinic-history">
         <ContentSwitcherContainer className={'bx--grid'}>
@@ -100,6 +155,7 @@ class ClinicHistory extends Component {
           linkTextTwo={""}
           linkHrefTwo={""}
           buttonText={'Save'}
+          onClick={this.handleSave}
         />
       </Page>
     );

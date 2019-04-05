@@ -10,17 +10,17 @@ import './styles.css';
 
 const NonPathologicalHistorySchema = Yup.object().shape({
   feedingHabits: Yup.object().shape({
-    breakfast: Yup.string().required('Required'),
-    midMorning: Yup.string().required('Required'),
-    launch: Yup.string().required('Required'),
-    midAfternoon: Yup.string().required('Required'),
-    dinner: Yup.string().required('Required'),
+    breakfast: Yup.string(),
+    midMorning: Yup.string(),
+    launch: Yup.string(),
+    midAfternoon: Yup.string(),
+    dinner: Yup.string(),
   }),
-  exercise: Yup.string().required('Required'),
-  dreamQuality: Yup.string().required('Required'),
-  medications: Yup.string().required('Required'),
-  facialCare: Yup.string().required('Required'),
-  toxic: Yup.string().required('Required'),
+  exercise: Yup.string(),
+  dreamQuality: Yup.string(),
+  medications: Yup.string(),
+  facialCare: Yup.string(),
+  toxic: Yup.string(),
 });
 
 class NonPathologicalHistory extends Component {
@@ -55,6 +55,7 @@ class NonPathologicalHistory extends Component {
                           id="feedingHabits.breakfast"
                           invalid={errors.feedingHabits && errors.feedingHabits.breakfast}
                           invalidText={errors.feedingHabits && errors.feedingHabits.breakfast}
+                          value={values.feedingHabits && values.feedingHabits.breakfast}
                           onChange={(e) => {
                             setFieldValue('feedingHabits.breakfast', e.target.value);
                           }}
@@ -69,6 +70,7 @@ class NonPathologicalHistory extends Component {
                           id="feedingHabits.midMorning"
                           invalid={errors.feedingHabits && errors.feedingHabits.midMorning}
                           invalidText={errors.feedingHabits && errors.feedingHabits.midMorning}
+                          value={values.feedingHabits && values.feedingHabits.midMorning}
                           onChange={(e) => {
                             setFieldValue('feedingHabits.midMorning', e.target.value);
                           }}
@@ -80,11 +82,12 @@ class NonPathologicalHistory extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Launch"
-                          id="launch"
+                          id="feedingHabits.launch"
                           invalid={errors.feedingHabits && errors.feedingHabits.launch}
                           invalidText={errors.feedingHabits && errors.feedingHabits.launch}
+                          value={values.feedingHabits && values.feedingHabits.launch}
                           onChange={(e) => {
-                            setFieldValue('launch', e.target.value);
+                            setFieldValue('feedingHabits.launch', e.target.value);
                           }}
                           rows={2}
                         />
@@ -94,11 +97,12 @@ class NonPathologicalHistory extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Mid Afternoon"
-                          id="midAfternoon"
+                          id="feedingHabits.midAfternoon"
                           invalid={errors.feedingHabits && errors.feedingHabits.midAfternoon}
                           invalidText={errors.feedingHabits && errors.feedingHabits.midAfternoon}
+                          value={values.feedingHabits && values.feedingHabits.midAfternoon}
                           onChange={(e) => {
-                            setFieldValue('midAfternoon', e.target.value);
+                            setFieldValue('feedingHabits.midAfternoon', e.target.value);
                           }}
                           rows={2}
                         />
@@ -108,11 +112,12 @@ class NonPathologicalHistory extends Component {
                       <div className="bx--col">
                         <TextArea
                           labelText="Dinner"
-                          id="dinner"
+                          id="feedingHabits.dinner"
                           invalid={errors.feedingHabits && errors.feedingHabits.dinner}
                           invalidText={errors.feedingHabits && errors.feedingHabits.dinner}
+                          value={values.feedingHabits && values.feedingHabits.dinner}
                           onChange={(e) => {
-                            setFieldValue('dinner', e.target.value);
+                            setFieldValue('feedingHabits.dinner', e.target.value);
                           }}
                           rows={2}
                         />
@@ -130,6 +135,7 @@ class NonPathologicalHistory extends Component {
                           id="exercise"
                           invalid={errors.exercise}
                           invalidText={errors.exercise}
+                          value={values.exercise}
                           onChange={(e) => {
                             setFieldValue('exercise', e.target.value);
                           }}
@@ -144,6 +150,7 @@ class NonPathologicalHistory extends Component {
                           id="dreamQuality"
                           invalid={errors.dreamQuality}
                           invalidText={errors.dreamQuality}
+                          value={values.dreamQuality}
                           onChange={(e) => {
                             setFieldValue('dreamQuality', e.target.value);
                           }}
@@ -158,6 +165,7 @@ class NonPathologicalHistory extends Component {
                           id="medications"
                           invalid={errors.medications}
                           invalidText={errors.medications}
+                          value={values.medications}
                           onChange={(e) => {
                             setFieldValue('medications', e.target.value);
                           }}
@@ -172,6 +180,7 @@ class NonPathologicalHistory extends Component {
                           id="facialCare"
                           invalid={errors.facialCare}
                           invalidText={errors.facialCare}
+                          value={values.facialCare}
                           onChange={(e) => {
                             setFieldValue('facialCare', e.target.value);
                           }}
@@ -186,6 +195,7 @@ class NonPathologicalHistory extends Component {
                           id="toxic"
                           invalid={errors.toxic}
                           invalidText={errors.toxic}
+                          value={values.toxic}
                           onChange={(e) => {
                             setFieldValue('toxic', e.target.value);
                           }}
