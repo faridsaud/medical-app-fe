@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next build && next start -p $PORT",
+    "start": "next build && next start -p $PORT -H 0.0.0.0",
     "lint": "eslint ."
   },
   "dependencies": {
