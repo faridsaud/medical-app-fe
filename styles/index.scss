@@ -2,6 +2,7 @@ $css--font-face: true;
 $css--reset: true;
 
 @import '~carbon-components/scss/globals/scss/styles.scss';
+@import '~react-toastify/dist/ReactToastify.css';
 
 .bx--grid{
   max-width: 1600px;
