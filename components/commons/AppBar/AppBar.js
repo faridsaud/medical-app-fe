@@ -7,7 +7,7 @@ class AppBar extends Component {
       <React.Fragment>
         <div className="app-header">
           <a href="/dashboard" className="main-link" style={{ ...productiveHeading02 }}>
-            Home
+            Mediceone
           </a>
         </div>
         <style jsx>

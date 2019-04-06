@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Button, Switch, ContentSwitcher, Footer } from 'carbon-components-react';
+import { Button, Switch, ContentSwitcher } from 'carbon-components-react';
 import Page from '../components/commons/Page/Page';
 import PostExam from '../components/forms/PostExam';
 import PhysicalExam from '../components/forms/PhysicalExam';
@@ -9,6 +9,8 @@ import RestServices from '../services/rest';
 import { toast } from 'react-toastify';
 import Router from 'next/dist/client/router';
 import _ from 'lodash';
+import Footer from '../components/commons/Footer/Footer';
+
 
 class MedicalConsultation extends Component {
   constructor(props) {
@@ -206,15 +208,12 @@ class MedicalConsultation extends Component {
         </ContentSwitcherContainer>
         {this.renderCurrentStep()}
         <Footer
-          labelOne={''}
-          linkTextOne={''}
-          linkHrefOne={''}
-          labelTwo={''}
-          linkTextTwo={''}
-          linkHrefTwo={''}
-          buttonText={'Save'}
-          onClick={this.handleSave}
+          primaryAction={{
+            label: 'Save',
+            onClick: this.handleSave,
+          }}
         />
+
       </Page>
     );
   }

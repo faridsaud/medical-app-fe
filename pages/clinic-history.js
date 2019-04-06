@@ -11,6 +11,7 @@ import MedicalConsultations from '../components/commons/Table/MedicalConsultatio
 import RestServices from '../services/rest';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
+import Footer from '../components/commons/Footer/Footer';
 
 class ClinicHistory extends Component {
   constructor(props) {
@@ -221,16 +222,12 @@ class ClinicHistory extends Component {
             />
           </MedicalConsultationsContainer>
         }
-        {/*<Footer*/}
-          {/*labelOne={""}*/}
-          {/*linkTextOne={""}*/}
-          {/*linkHrefOne={""}*/}
-          {/*labelTwo={""}*/}
-          {/*linkTextTwo={""}*/}
-          {/*linkHrefTwo={""}*/}
-          {/*buttonText={'Save'}*/}
-          {/*onClick={this.handleSave}*/}
-        {/*/>*/}
+        <Footer
+          primaryAction={{
+            label: 'Save',
+            onClick: this.handleSave,
+          }}
+        />
       </Page>
     );
   }

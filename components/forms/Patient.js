@@ -71,7 +71,7 @@ class Patient extends Component {
               </div>
               <div className="bx--col bx--col-sm-4">
                 <DatePicker
-                  datePickerType="single"
+                  datePickerType="simple"
                   maxDate={new Date()}
                   onChange={(dates) => {
                     setFieldValue('birthDate', dates[0]);
