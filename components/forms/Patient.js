@@ -4,14 +4,14 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
   Form, TextInput,
-  DatePicker, DatePickerInput, Select, SelectItem,
+  DatePicker, DatePickerInput, Select, SelectItem, TextArea,
 } from 'carbon-components-react';
 import './styles.css';
 
 const PatientSchema = Yup.object().shape({
-  firstName: Yup.string().required('Required'),
-  lastName: Yup.string().required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
+  firstName: Yup.string(),
+  lastName: Yup.string(),
+  email: Yup.string().email('Invalid email'),
   birthDate: Yup.date(),
   civilStatus: Yup.string(),
   phoneNumber: Yup.string(),
@@ -71,7 +71,7 @@ class Patient extends Component {
               </div>
               <div className="bx--col bx--col-sm-4">
                 <DatePicker
-                  datePickerType="simple"
+                  datePickerType="single"
                   maxDate={new Date()}
                   onChange={(dates) => {
                     setFieldValue('birthDate', dates[0]);
@@ -178,7 +178,7 @@ class Patient extends Component {
 
             <div className="bx--row">
               <div className="bx--col bx--col-sm-12">
-                <TextInput
+                <TextArea
                   labelText="Address"
                   id="address"
                   invalid={errors.placeOfResidence && errors.placeOfResidence.address}
@@ -188,9 +188,17 @@ class Patient extends Component {
                   onChange={(e) => {
                     setFieldValue('placeOfResidence.address', e.target.value);
                   }}
+                  rows={2}
                 />
               </div>
             </div>
+            <style jsx>
+              {`
+                .bx--text-area__wrapper {
+                  width: 100% !important;
+                }
+              `}
+            </style>
           </Form>
         )}
       </Formik>

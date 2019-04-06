@@ -7,3 +7,13 @@
 .bx--form-item{
     padding-top: 1rem;
 }
+
+.bx--text-area__wrapper{
+    width: 100% !important;
+}
+
+.bx--date-picker-input__wrapper > input {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 3rem;
+}

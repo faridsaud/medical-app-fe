@@ -124,6 +124,10 @@ class NonPathologicalHistory extends Component {
                       </div>
                     </div>
                   </AccordionItem>
+                </Accordion>
+              </div>
+              <div className="bx--col">
+                <Accordion>
                   <AccordionItem
                     title="Non-Feeding Habits"
                   >
