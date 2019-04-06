@@ -226,8 +226,8 @@ class PhysicalExam extends Component {
                   >
                     <div className="bx--row">
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Weight"
+                        <TextInput
+                          labelText="Weight"
                           id="bodyExam.weight"
                           invalid={errors.bodyExam && errors.bodyExam.weight}
                           invalidText={errors.bodyExam && errors.bodyExam.weight}
@@ -238,8 +238,8 @@ class PhysicalExam extends Component {
                         />
                       </div>
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Size"
+                        <TextInput
+                          labelText="Size"
                           id="bodyExam.size"
                           invalid={errors.bodyExam && errors.bodyExam.size}
                           invalidText={errors.bodyExam && errors.bodyExam.size}
@@ -250,8 +250,8 @@ class PhysicalExam extends Component {
                         />
                       </div>
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Body Mass Index"
+                        <TextInput
+                          labelText="Body Mass Index"
                           id="bodyExam.bodyMassIndex"
                           invalid={errors.bodyExam && errors.bodyExam.bodyMassIndex}
                           invalidText={errors.bodyExam && errors.bodyExam.bodyMassIndex}
@@ -261,11 +261,9 @@ class PhysicalExam extends Component {
                           }}
                         />
                       </div>
-                    </div>
-                    <div className="bx--row">
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Body Fat Percentage"
+                        <TextInput
+                          labelText="Body Fat Percentage"
                           id="bodyExam.bodyFatPercentage"
                           invalid={errors.bodyExam && errors.bodyExam.bodyFatPercentage}
                           invalidText={errors.bodyExam && errors.bodyExam.bodyFatPercentage}
@@ -276,8 +274,8 @@ class PhysicalExam extends Component {
                         />
                       </div>
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Body Muscle Percentage"
+                        <TextInput
+                          labelText="Body Muscle Percentage"
                           id="bodyExam.bodyMusclePercentage"
                           invalid={errors.bodyExam && errors.bodyExam.bodyMusclePercentage}
                           invalidText={errors.bodyExam && errors.bodyExam.bodyMusclePercentage}
@@ -288,8 +286,8 @@ class PhysicalExam extends Component {
                         />
                       </div>
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Hip Circumference"
+                        <TextInput
+                          labelText="Hip Circumference"
                           id="bodyExam.hipCircumference"
                           invalid={errors.bodyExam && errors.bodyExam.hipCircumference}
                           invalidText={errors.bodyExam && errors.bodyExam.hipCircumference}
@@ -299,11 +297,9 @@ class PhysicalExam extends Component {
                           }}
                         />
                       </div>
-                    </div>
-                    <div className="bx--row">
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Biceps Circumference"
+                        <TextInput
+                          labelText="Biceps Circumference"
                           id="bodyExam.bicepsCircumference"
                           invalid={errors.bodyExam && errors.bodyExam.bicepsCircumference}
                           invalidText={errors.bodyExam && errors.bodyExam.bicepsCircumference}
@@ -314,8 +310,8 @@ class PhysicalExam extends Component {
                         />
                       </div>
                       <div className="bx--col bx--col-sm-4">
-                        <NumberInput
-                          label="Quadriceps Circumference"
+                        <TextInput
+                          labelText="Quadriceps Circumference"
                           id="bodyExam.quadricepsCircumference"
                           invalid={errors.bodyExam && errors.bodyExam.quadricepsCircumference}
                           invalidText={errors.bodyExam && errors.bodyExam.quadricepsCircumference}
@@ -323,6 +319,7 @@ class PhysicalExam extends Component {
                           onChange={(e) => {
                             setFieldValue('bodyExam.quadricepsCircumference', parseFloat(e.target.value) || 0);
                           }}
+                          type="number"
                         />
                       </div>
                       <div className="bx--col bx--col-sm-4">
@@ -338,7 +335,7 @@ class PhysicalExam extends Component {
                         />
                       </div>
                     </div>
-                    <div className="bx--row">
+                    <div className="bx--row" style={{paddingTop: '1rem'}}>
                       <div className="bx--col bx--col-sm-4">
                         <Toggle
                           labelA="No"

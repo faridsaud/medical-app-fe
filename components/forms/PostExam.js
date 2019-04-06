@@ -51,7 +51,7 @@ class PostExam extends Component {
             <div className="bx--row">
               <div className="bx--col">
                 <TextArea
-                  labelText="TreatmentPlan"
+                  labelText="Treatment Plan"
                   id="treatmentPlan"
                   invalid={errors.treatmentPlan}
                   invalidText={errors.treatmentPlan}
@@ -79,7 +79,7 @@ class PostExam extends Component {
             <div className="bx--row">
               <div className="bx--col">
                 <TextArea
-                  labelText="ComplementaryExam"
+                  labelText="Complementary Exam"
                   id="complementaryExam"
                   invalid={errors.complementaryExam}
                   invalidText={errors.complementaryExam}
