@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Button, Switch, ContentSwitcher, Footer } from 'carbon-components-react';
+import { Button, Switch, ContentSwitcher } from 'carbon-components-react';
 import { productiveHeading03 } from '@carbon/type';
 import _ from 'lodash';
 import Patient from '../components/forms/Patient';
@@ -221,16 +221,16 @@ class ClinicHistory extends Component {
             />
           </MedicalConsultationsContainer>
         }
-        <Footer
-          labelOne={""}
-          linkTextOne={""}
-          linkHrefOne={""}
-          labelTwo={""}
-          linkTextTwo={""}
-          linkHrefTwo={""}
-          buttonText={'Save'}
-          onClick={this.handleSave}
-        />
+        {/*<Footer*/}
+          {/*labelOne={""}*/}
+          {/*linkTextOne={""}*/}
+          {/*linkHrefOne={""}*/}
+          {/*labelTwo={""}*/}
+          {/*linkTextTwo={""}*/}
+          {/*linkHrefTwo={""}*/}
+          {/*buttonText={'Save'}*/}
+          {/*onClick={this.handleSave}*/}
+        {/*/>*/}
       </Page>
     );
   }

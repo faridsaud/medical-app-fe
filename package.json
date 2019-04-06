@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next build && next start",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.18.0",
     "carbon-components": "^10.0.0",
-    "carbon-components-react": "^6.114.0",
+    "carbon-components-react": "^7.0.0",
     "carbon-icons": "^7.0.7",
     "formik": "^1.5.1",
     "lodash": "^4.17.11",
@@ -24,7 +24,6 @@
     "react-albus": "^2.0.0",
     "react-dom": "16.8.6",
     "react-toastify": "^5.0.0-rc.6",
-    "save": "^2.3.3",
     "styled-components": "^4.0.0",
     "yup": "^0.27.0"
   },
