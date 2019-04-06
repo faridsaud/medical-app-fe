@@ -1,5 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/index.scss';
 
 class MyApp extends App {
@@ -19,6 +21,7 @@ class MyApp extends App {
     return (
       <Container>
         <Component {...pageProps} />
+        <ToastContainer />
       </Container>
     );
   }
