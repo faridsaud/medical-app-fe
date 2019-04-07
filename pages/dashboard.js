@@ -54,7 +54,7 @@ class Dashboard extends Component {
             labelText="Filter clinic histories"
             closeButtonLabelText=""
             placeHolderText="Search by name or document number"
-            onChange={(e) => { this.setState({ searchTerm: e.target.value }); }}
+            onChange={(e) => { this.setState({ searchTerm: e.target.value? e.target.value.toLowerCase(): '' }); }}
           />
           <ClinicHistories
             clinicHistories={this.filterClinicHistories(clinicHistories, searchTerm)}
