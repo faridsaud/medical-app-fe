@@ -19,6 +19,7 @@
     "lodash": "^4.17.11",
     "next": "8.0.3",
     "node-sass": "^4.11.0",
+    "pdfmake": "^0.1.71",
     "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-albus": "^2.0.0",
