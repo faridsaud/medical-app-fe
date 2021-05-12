@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import Router from 'next/dist/client/router';
 import _ from 'lodash';
 import Footer from '../components/commons/Footer/Footer';
+import { printData } from "../utils/print";
 
 
 class MedicalConsultation extends Component {
@@ -124,6 +125,19 @@ class MedicalConsultation extends Component {
       })
   };
 
+  handlePrint = () => {
+    const {
+      preExam:{values: preExam},
+      physicalExam:{values: physicalExam},
+      postExam:{values: postExam} } = this.state;
+    console.log({physicalExam})
+    printData("Medical Consultation", {
+      preExam,
+      physicalExam,
+      postExam,
+    })
+  }
+
   handleSave = async () => {
     const {
       preExam:{values: preExam},
@@ -208,6 +222,11 @@ class MedicalConsultation extends Component {
         </ContentSwitcherContainer>
         {this.renderCurrentStep()}
         <Footer
+          secondaryAction={{
+            label:'Print',
+            onClick: this.handlePrint
+
+          }}
           primaryAction={{
             label: 'Save',
             onClick: this.handleSave,

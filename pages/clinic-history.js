@@ -12,6 +12,7 @@ import RestServices from '../services/rest';
 import Router from 'next/router';
 import { toast } from 'react-toastify';
 import Footer from '../components/commons/Footer/Footer';
+import { printData } from "../utils/print";
 
 class ClinicHistory extends Component {
   constructor(props) {
@@ -121,6 +122,19 @@ class ClinicHistory extends Component {
       })
   };
 
+  handlePrint = () => {
+    const {
+      patient: {values: patient},
+      pathologicalHistory: {values: pathologicalHistory},
+      nonPathologicalHistory: {values: nonPathologicalHistory},
+    } = this.state;
+    printData("Clinic History", {
+      patient,
+      pathologicalHistory,
+      nonPathologicalHistory,
+    })
+  }
+
   handleSave = async () => {
     const {
       patient: {values: patient},
@@ -223,6 +237,11 @@ class ClinicHistory extends Component {
           </MedicalConsultationsContainer>
         }
         <Footer
+          secondaryAction={{
+            label:'Print',
+            onClick: this.handlePrint
+
+          }}
           primaryAction={{
             label: 'Save',
             onClick: this.handleSave,
