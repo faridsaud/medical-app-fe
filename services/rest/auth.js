@@ -4,4 +4,4 @@ export const login = (email, password) => httpClient.post('/signin', { email, pa
 
 export default {
   login,
-}
+};

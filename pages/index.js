@@ -21,7 +21,8 @@ class Login extends Component {
   handleLogin = async () => {
     try {
       const {email, password} = this.state;
-      await RestServices.auth.login(email, password);
+      const {data: token} = await RestServices.auth.login(email, password);
+      localStorage.setItem('accessToken', token);
       Router.push('/dashboard');
     } catch (e) {
       toast.error(e.toString());
