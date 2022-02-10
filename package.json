@@ -21,7 +21,7 @@
     "formik": "^1.5.1",
     "lodash": "^4.17.11",
     "next": "8.0.3",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "pdfmake": "^0.1.71",
     "prop-types": "^15.7.2",
     "react": "16.8.6",
